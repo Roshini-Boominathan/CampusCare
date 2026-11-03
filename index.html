@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusCare | Complaint Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a class="brand" href="#">
+        <span class="brand-icon">✦</span>
+        CampusCare
+    </a>
+
+    <nav>
+        <button class="nav-link active" data-view="home">Home</button>
+        <button class="nav-link" data-view="submit">Submit Complaint</button>
+        <button class="nav-link" data-view="track">Track Complaint</button>
+        <button class="nav-link" data-view="admin">Admin</button>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- HOME -->
+    <section id="home" class="view active-view">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">CAMPUS MAINTENANCE PORTAL</span>
+                <h1>A better campus<br>starts with <span>your voice.</span></h1>
+                <p>
+                    Report maintenance issues, upload photos, and
+                    follow your complaints until they are resolved.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn primary" data-view="submit">
+                        Submit a Complaint
+                    </button>
+                    <button class="btn secondary" data-view="track">
+                        Track Status
+                    </button>
+                </div>
+            </div>
+            <div class="hero-art">
+                <div class="art-circle">🏫</div>
+                <div class="art-card">✓ Campus issues matter</div>
+            </div>
+        </div>
+
+        <div class="section-heading">
+            <span class="eyebrow">HOW IT WORKS</span>
+            <h2>Simple. Transparent. Effective.</h2>
+            <p>Three steps to a better campus environment.</p>
+        </div>
+
+        <div class="steps">
+            <article class="step-card">
+                <div class="step-icon">📝</div>
+                <h3>1. Report</h3>
+                <p>Describe the maintenance issue and attach a photograph.</p>
+            </article>
+            <article class="step-card">
+                <div class="step-icon">🔎</div>
+                <h3>2. Track</h3>
+                <p>Use your complaint ID and email to check its progress.</p>
+            </article>
+            <article class="step-card">
+                <div class="step-icon">✅</div>
+                <h3>3. Resolve</h3>
+                <p>Follow the status until the issue is marked resolved.</p>
+            </article>
+        </div>
+
+        <div class="notice">
+            <strong>Have a maintenance issue?</strong>
+            <span>Don't leave it unreported. Help us improve the campus.</span>
+            <button class="btn primary" data-view="submit">Report an Issue →</button>
+        </div>
+    </section>
+
+    <!-- SUBMIT COMPLAINT -->
+    <section id="submit" class="view">
+        <div class="page-heading">
+            <span class="eyebrow">STUDENT PORTAL</span>
+            <h1>Submit a Complaint</h1>
+            <p>Provide the details below so the maintenance team can investigate.</p>
+        </div>
+
+        <form id="complaintForm" class="form-card">
+            <div class="form-grid">
+                <div class="field">
+                    <label for="studentName">Student Name *</label>
+                    <input id="studentName" name="studentName"
+                        type="text" maxlength="100" required
+                        placeholder="Enter your full name">
+                </div>
+
+                <div class="field">
+                    <label for="studentEmail">Email Address *</label>
+                    <input id="studentEmail" name="studentEmail"
+                        type="email" maxlength="150" required
+                        placeholder="Enter your email">
+                </div>
+
+                <div class="field">
+                    <label for="category">Complaint Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select category</option>
+                        <option>Electrical</option>
+                        <option>Plumbing</option>
+                        <option>Furniture</option>
+                        <option>Cleanliness</option>
+                        <option>Classroom Maintenance</option>
+                        <option>Internet / Wi-Fi</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="location">Location *</label>
+                    <input id="location" name="location"
+                        type="text" maxlength="150" required
+                        placeholder="e.g. Block A, Room 204">
+                </div>
+
+                <div class="field full">
+                    <label for="title">Complaint Title *</label>
+                    <input id="title" name="title"
+                        type="text" maxlength="150" required
+                        placeholder="Briefly describe the issue">
+                </div>
+
+                <div class="field full">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description"
+                        rows="5" maxlength="5000" required
+                        placeholder="Explain the problem in detail..."></textarea>
+                </div>
+
+                <div class="field full">
+                    <label for="photo">Upload Photograph (Optional)</label>
+                    <div class="upload-box">
+                        <span class="upload-icon">📷</span>
+                        <input id="photo" name="photo" type="file"
+                            accept="image/jpeg,image/png,image/webp">
+                        <small>JPG, PNG or WEBP · Maximum 5 MB</small>
+                        <img id="photoPreview" alt="Photo preview"
+                            class="photo-preview hidden">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn primary submit-btn">
+                Submit Complaint →
+            </button>
+
+            <p id="submitMessage" class="message" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <!-- TRACK COMPLAINT -->
+    <section id="track" class="view">
+        <div class="page-heading">
+            <span class="eyebrow">COMPLAINT TRACKING</span>
+            <h1>Track Your Complaint</h1>
+            <p>Enter your complaint ID and registered email address.</p>
+        </div>
+
+        <form id="trackForm" class="form-card track-form">
+            <div class="field">
+                <label for="trackCode">Complaint ID *</label>
+                <input id="trackCode" required
+                    placeholder="e.g. CMP-000001">
+            </div>
+
+            <div class="field">
+                <label for="trackEmail">Registered Email *</label>
+                <input id="trackEmail" type="email" required
+                    placeholder="Enter your email">
+            </div>
+
+            <button type="submit" class="btn primary">Track Complaint</button>
+            <p id="trackMessage" class="message" aria-live="polite"></p>
+        </form>
+
+        <div id="trackResult" class="result-card hidden"></div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="view">
+        <div class="page-heading">
+            <span class="eyebrow">ADMINISTRATION</span>
+            <h1>Administrator Dashboard</h1>
+            <p>Manage campus maintenance complaints.</p>
+        </div>
+
+        <form id="adminLoginForm" class="form-card admin-login">
+            <h2>Admin Login</h2>
+            <div class="field">
+                <label for="adminPassword">Administrator Password</label>
+                <input id="adminPassword" type="password"
+                    required placeholder="Enter admin password">
+            </div>
+            <button type="submit" class="btn primary">Login</button>
+            <p id="adminMessage" class="message" aria-live="polite"></p>
+        </form>
+
+        <div id="adminDashboard" class="hidden">
+            <div class="dashboard-top">
+                <div>
+                    <span class="eyebrow">OVERVIEW</span>
+                    <h2>Complaint Management</h2>
+                </div>
+                <button id="logoutBtn" class="btn secondary">Logout</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span>Total Complaints</span>
+                    <strong id="totalCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Pending</span>
+                    <strong id="pendingCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>In Progress</span>
+                    <strong id="progressCount">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>Resolved</span>
+                    <strong id="resolvedCount">0</strong>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-heading">
+                    <h3>All Complaints</h3>
+                    <button id="refreshBtn" class="btn secondary small-btn">
+                        ↻ Refresh
+                    </button>
+                </div>
+                <div id="adminMessageList" class="message"></div>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Complaint</th>
+                                <th>Student</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-brand">✦ CampusCare</div>
+    <p>Making our campus a better place, one complaint at a time.</p>
+    <small>Campus Complaint Management Mini Project</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
